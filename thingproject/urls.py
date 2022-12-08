@@ -19,5 +19,5 @@ from things import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.render_html, name='render_html'),
+    path('', views.render_html),
 ]
