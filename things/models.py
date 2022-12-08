@@ -1,9 +1,13 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Transfer(models.Model):
     """Bank Transfer Model"""
-    name = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
-    name = models.IntegerField(max_length=30)
+    name = models.CharField(max_length=30, unique=True, blank=False)
+    description = models.CharField(max_length=120, unique=False, blank=True)
+    quantity = models.IntegerField(unique=False, validators=[
+        MinValueValidator(0),
+        MaxValueValidator(100)
+        ])
     
 # Create your models here.
